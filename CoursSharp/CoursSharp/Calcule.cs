@@ -25,6 +25,7 @@ namespace CoursSharp
         public int Calculer(int a, int b, Func<int,int,int> methodeCalcule)
         {
             return methodeCalcule(a, b);
+
         }
 
         public void AfficherResult(int resultat, Action<int> MethodeAffichage)
