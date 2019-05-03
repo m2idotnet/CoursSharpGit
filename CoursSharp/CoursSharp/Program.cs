@@ -9,21 +9,37 @@ namespace CoursSharp
         static void Main(string[] args)
         {
 
-            Calcule c = new Calcule();
-            Console.WriteLine(c.Calculer(10, 3, c.Addition));
-            Console.WriteLine(c.Calculer(10, 3, c.soustraction));
-            c.AfficherResult(c.Calculer(10, 3, c.soustraction), AffichageFr);
-            c.AfficherResult(c.Calculer(10, 3, c.soustraction), AffichageEn);
-
-            ////int b = 10;
-            ////methode(ref b);
-            ////methode(out b);
-            ////Console.WriteLine(b);
-            //Personne p = new Personne { Nom = "tata" };
-            //MethodePersonne(p);
-            //Console.Write(p.Nom);
-
+            Voiture v = new Voiture { Model = "Ford", Price = 10000M };
+            v.Promo += EnvoyerEmail;
+            v.Promo += EnvoyerNotification;
+            string choix;
+            do
+            {
+                Console.Write("Est ce que la voiture est en promo ? :");
+                choix = Console.ReadLine();
+                if(choix == "oui")
+                {
+                    Console.Write("Montant de la reduction : ");
+                    decimal reduction = Convert.ToDecimal(Console.ReadLine());
+                    v.AppliquerPromotion(reduction);
+                    v.Promo -= EnvoyerNotification;
+                    v.Promo += (p) =>
+                    {
+                        Console.WriteLine("Envoyer message deuxieme reduction prix voiture : " + p);
+                    };
+                }
+            }
+            while (choix != "0");
             Console.ReadLine();
+        }
+
+        static void EnvoyerEmail(decimal p)
+        {
+            Console.WriteLine("On envoie un email la voiture est en promo : " + p);
+        }
+        static void EnvoyerNotification(decimal p)
+        {
+            Console.WriteLine("On envoie une notification la voiture est en promo : " + p);
         }
 
         static void AffichageFr(int r)
@@ -35,7 +51,22 @@ namespace CoursSharp
         {
             Console.WriteLine("The result is : " + r);
         }
+        //static void lambda()
+        //{
+        //    Calcule c = new Calcule();
+        //    Console.WriteLine(c.Calculer(10, 3, c.Addition));
+        //    Console.WriteLine(c.Calculer(10, 3, c.soustraction));
+        //    c.AfficherResult(c.Calculer(10, 3, c.soustraction), AffichageFr);
+        //    c.AfficherResult(c.Calculer(10, 3, c.soustraction), AffichageEn);
 
+        //    ////int b = 10;
+        //    ////methode(ref b);
+        //    ////methode(out b);
+        //    ////Console.WriteLine(b);
+        //    //Personne p = new Personne { Nom = "tata" };
+        //    //MethodePersonne(p);
+        //    //Console.Write(p.Nom);
+        //}
         //static void methode(int a)
         //{
         //    a = a + 15;
