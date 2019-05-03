@@ -9,20 +9,35 @@ namespace CoursSharp
         static void Main(string[] args)
         {
 
+
             Calcule c = new Calcule();
-            Console.WriteLine(c.Calculer(10, 3, c.Addition));
-            Console.WriteLine(c.Calculer(10, 3, c.soustraction));
-            c.AfficherResult(c.Calculer(10, 3, c.soustraction), AffichageFr);
-            c.AfficherResult(c.Calculer(10, 3, c.soustraction), AffichageEn);
+            c.delegueAffichage += AffichageFr;
+            c.delegueAffichage += AffichageEn;
+            Console.WriteLine("Executer les methode  : ");
+            
 
-            ////int b = 10;
-            ////methode(ref b);
-            ////methode(out b);
-            ////Console.WriteLine(b);
-            //Personne p = new Personne { Nom = "tata" };
-            //MethodePersonne(p);
-            //Console.Write(p.Nom);
-
+            Console.WriteLine(c.Calculer((tab) => {
+                int res = 0;
+                foreach (int i in tab)
+                {
+                    res += i;
+                }
+                return res;
+            }, 30, 15, 45, 79));
+            Console.WriteLine(c.Calculer((tab) => {
+                int res = tab[0];
+                for(int i=1; i<tab.Length; i++)
+                {
+                    res -= tab[i];
+                }
+                return res;
+            }, 30, 15, 79));
+            string choix = Console.ReadLine();
+            if(choix == "oui")
+            {
+                c.declancherTousMethode(30);
+            }
+            
             Console.ReadLine();
         }
 
@@ -35,6 +50,34 @@ namespace CoursSharp
         {
             Console.WriteLine("The result is : " + r);
         }
+
+        //static void delegueEtLmabda()
+        //{
+        //    Calcule c = new Calcule();
+        //    Console.WriteLine(c.Calculer(10, 3, c.Addition));
+        //    Console.WriteLine(c.Calculer(10, 3, c.soustraction));
+        //    c.AfficherResult(c.Calculer(10, 3, c.soustraction), AffichageFr);
+        //    c.AfficherResult(c.Calculer(10, 3, c.soustraction), AffichageEn);
+        //    //c.AfficherResult(35, delegate (int a) {
+        //    //    Console.WriteLine("une nouvelle manière d'afficher " + a);
+        //    //});
+        //    //c.AfficherResult(35, (int a) => {
+        //    //    Console.WriteLine("une nouvelle manière d'afficher " + a);
+        //    //});
+
+        //    //expression lambda
+        //    c.AfficherResult(35, (b) => {
+        //        b = b + 10;
+        //        Console.WriteLine("une nouvelle manière d'afficher " + b);
+        //    });
+        //    ////int b = 10;
+        //    ////methode(ref b);
+        //    ////methode(out b);
+        //    ////Console.WriteLine(b);
+        //    //Personne p = new Personne { Nom = "tata" };
+        //    //MethodePersonne(p);
+        //    //Console.Write(p.Nom);
+        //}
 
         //static void methode(int a)
         //{
@@ -51,16 +94,16 @@ namespace CoursSharp
         //}
 
         //en utilisant out
-        static void methode(out int a)
-        {
-            a = 215;
-            Console.WriteLine(a);
-        }
+        //static void methode(out int a)
+        //{
+        //    a = 215;
+        //    Console.WriteLine(a);
+        //}
 
-        static void MethodePersonne(Personne p)
-        {
-            p.Nom = "toto";
-        }
+        //static void MethodePersonne(Personne p)
+        //{
+        //    p.Nom = "toto";
+        //}
 
         //static void StreamerAndJson()
         //{

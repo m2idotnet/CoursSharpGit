@@ -7,6 +7,8 @@ namespace CoursSharp
     public class Calcule
     {
         public delegate int delegueCalcule(int a, int b);
+
+        public Action<int> delegueAffichage;
         public int Addition(int a, int b)
         {
             return a + b;
@@ -22,15 +24,24 @@ namespace CoursSharp
         //    return methodeCalcule(a, b);
         //}
 
-        public int Calculer(int a, int b, Func<int,int,int> methodeCalcule)
+        public int Calculer(Func<int[], int> methodeCalcule, params int[] parms )
         {
-            return methodeCalcule(a, b);
+            return methodeCalcule(parms);
         }
+
+       
 
         public void AfficherResult(int resultat, Action<int> MethodeAffichage)
         {
             MethodeAffichage(resultat);
         }
+
+        public void declancherTousMethode(int a)
+        {
+            delegueAffichage(a);
+        }
+
+
 
     }
 }
