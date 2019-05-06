@@ -8,30 +8,80 @@ namespace CoursSharp
     {
         static void Main(string[] args)
         {
+            //Gestion des excecptions
+            //Gérer les exceptions
+            //Console.Write("Merci de saisir un entier : ");
+            //try
+            //{
+            //    int valeur = Convert.ToInt32(Console.ReadLine());
+            //    try
+            //    {
+            //        Voiture v = null;
+            //        v.Model = "Ford";
+            //        Console.WriteLine(v);
+            //    }
+            //    catch(NullReferenceException ex)
+            //    {
+            //        Console.WriteLine("Error null " + ex.Message); 
+            //    }
+            //}
+            //catch(FormatException ex)
+            //{
+            //    Console.WriteLine("Error format : " + ex.Message);
+            //}
+            //catch(Exception ex)
+            //{
+            //    Console.WriteLine("Error général : "+ex.Message);
+            //}
+            //finally
+            //{
+            //    Console.WriteLine("Merci d'avoir saisi quelque chose");
+            //}
 
-            Voiture v = new Voiture { Model = "Ford", Price = 10000M };
-            v.Promo += EnvoyerEmail;
-            v.Promo += EnvoyerNotification;
-            string choix;
-            do
+            //Générer les exceptions
+            Voiture v = new Voiture();
+            v.Model = "Ford";
+            try
             {
-                Console.Write("Est ce que la voiture est en promo ? :");
-                choix = Console.ReadLine();
-                if(choix == "oui")
-                {
-                    Console.Write("Montant de la reduction : ");
-                    decimal reduction = Convert.ToDecimal(Console.ReadLine());
-                    v.AppliquerPromotion(reduction);
-                    v.Promo -= EnvoyerNotification;
-                    v.Promo += (p) =>
-                    {
-                        Console.WriteLine("Envoyer message deuxieme reduction prix voiture : " + p);
-                    };
-                }
+                v.Price = -100M;
+               
             }
-            while (choix != "0");
-            Console.ReadLine();
+            catch(NegativeValueException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Console.WriteLine("continue");
+            }
+            
+            Console.Read();
         }
+        //static void EventCours()
+        //{
+        //    Voiture v = new Voiture { Model = "Ford", Price = 10000M };
+        //    v.Promo += EnvoyerEmail;
+        //    v.Promo += EnvoyerNotification;
+        //    string choix;
+        //    do
+        //    {
+        //        Console.Write("Est ce que la voiture est en promo ? :");
+        //        choix = Console.ReadLine();
+        //        if (choix == "oui")
+        //        {
+        //            Console.Write("Montant de la reduction : ");
+        //            decimal reduction = Convert.ToDecimal(Console.ReadLine());
+        //            v.AppliquerPromotion(reduction);
+        //            v.Promo -= EnvoyerNotification;
+        //            v.Promo += (p) =>
+        //            {
+        //                Console.WriteLine("Envoyer message deuxieme reduction prix voiture : " + p);
+        //            };
+        //        }
+        //    }
+        //    while (choix != "0");
+        //    Console.ReadLine();
+        //}
 
         static void EnvoyerEmail(decimal p)
         {

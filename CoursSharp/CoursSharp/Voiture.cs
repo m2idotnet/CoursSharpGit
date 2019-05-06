@@ -10,7 +10,14 @@ namespace CoursSharp
         private decimal price;
 
         public string Model { get => model; set => model = value; }
-        public decimal Price { get => price; set => price = value; }
+        public decimal Price { get => price; set {
+                if (value > 0)
+                    price = value;
+                else
+                    //throw new Exception("Prix incorrect");
+                    throw new NegativeValueException();
+            }
+        }
         public event Action<decimal> Promo;
 
 
