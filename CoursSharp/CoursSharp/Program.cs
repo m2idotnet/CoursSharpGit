@@ -48,7 +48,7 @@ namespace CoursSharp
             }
             catch(NegativeValueException ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.MessageSpec);
             }
             finally
             {

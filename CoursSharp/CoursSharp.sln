@@ -5,7 +5,9 @@ VisualStudioVersion = 15.0.27428.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoursSharp", "CoursSharp\CoursSharp.csproj", "{21871738-4835-44CA-AC5E-AB76F29DF685}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PassageTableau", "PassageTableau\PassageTableau.csproj", "{DEF56041-21A8-4365-8676-4A29A8A5E18D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PassageTableau", "PassageTableau\PassageTableau.csproj", "{DEF56041-21A8-4365-8676-4A29A8A5E18D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursAdoNet", "CoursAdoNet\CoursAdoNet.csproj", "{DBEAD6F7-8B6A-460C-B9A4-B29B07A7C3F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{DEF56041-21A8-4365-8676-4A29A8A5E18D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DEF56041-21A8-4365-8676-4A29A8A5E18D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DEF56041-21A8-4365-8676-4A29A8A5E18D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBEAD6F7-8B6A-460C-B9A4-B29B07A7C3F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBEAD6F7-8B6A-460C-B9A4-B29B07A7C3F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBEAD6F7-8B6A-460C-B9A4-B29B07A7C3F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBEAD6F7-8B6A-460C-B9A4-B29B07A7C3F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

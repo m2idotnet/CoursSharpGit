@@ -15,7 +15,7 @@ namespace CoursSharp
                     price = value;
                 else
                     //throw new Exception("Prix incorrect");
-                    throw new NegativeValueException();
+                    throw new NegativeValueException("Message spec");
             }
         }
         public event Action<decimal> Promo;
