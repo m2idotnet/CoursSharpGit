@@ -1,5 +1,6 @@
 ﻿using CoursAdoNet;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -61,7 +62,14 @@ namespace CoursAdoNetDeconnecte
             tablePersonne.Rows[3]["Nom"] = "New Value of name at index number 3";
             Connection.Instance.Open();
             //suppression d'une ligne à l'interieur d'une table du DataSet
-            tablePersonne.Rows[5].Delete();
+            //tablePersonne.Rows[5].Delete();
+            for(int i=0; i< tablePersonne.Rows.Count; i++)
+            {
+                if((string)tablePersonne.Rows[i]["Nom"] == "tata")
+                {
+                    tablePersonne.Rows[i].Delete();
+                }
+            }
             //Mettre à jour la base de donnée à partir de la table du DataSet en utilisant les commandes du adapter
             adapter.Update(tablePersonne);
             Connection.Instance.Close();
