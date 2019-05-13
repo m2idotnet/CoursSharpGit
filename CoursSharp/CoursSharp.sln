@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PassageTableau", "PassageTa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoursAdoNet", "CoursAdoNet\CoursAdoNet.csproj", "{DBEAD6F7-8B6A-460C-B9A4-B29B07A7C3F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursAdoNetDeconnecte", "CoursAdoNetDeconnecte\CoursAdoNetDeconnecte.csproj", "{730F8529-70EE-46BD-94B4-661B7FB81693}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoursAdoNetDeconnecte", "CoursAdoNetDeconnecte\CoursAdoNetDeconnecte.csproj", "{730F8529-70EE-46BD-94B4-661B7FB81693}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursMultiThreading", "CoursMultiThreading\CoursMultiThreading.csproj", "{243013F4-247E-439C-86F1-234B85CD4283}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{730F8529-70EE-46BD-94B4-661B7FB81693}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{730F8529-70EE-46BD-94B4-661B7FB81693}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{730F8529-70EE-46BD-94B4-661B7FB81693}.Release|Any CPU.Build.0 = Release|Any CPU
+		{243013F4-247E-439C-86F1-234B85CD4283}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{243013F4-247E-439C-86F1-234B85CD4283}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{243013F4-247E-439C-86F1-234B85CD4283}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{243013F4-247E-439C-86F1-234B85CD4283}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
