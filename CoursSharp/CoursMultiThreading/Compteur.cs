@@ -11,6 +11,7 @@ namespace CoursMultiThreading
         private string nom;
         public static int ordre = 0;
         private static object _lock = new object();
+        private Mutex m = new Mutex();
 
         public int N { get => n; set => n = value; }
         public string Nom { get => nom; set => nom = value; }
@@ -18,16 +19,16 @@ namespace CoursMultiThreading
         public void Compter()
         {
             Random r = new Random();
-            for(int i = 1; i <= N; i++)
+            for (int i = 1; i <= N; i++)
             {
                 Thread.Sleep(r.Next(0, 3000));
                 Console.WriteLine(Nom + " " + i);
             }
-            lock(_lock)
-            { 
-                ordre++;
-                Console.WriteLine(Nom + " a fini de compter jusqu'a " + N + " ordre : " + ordre);
-            }
+            m.WaitOne();
+            ordre++;
+            Console.WriteLine(Nom + " a fini de compter jusqu'a " + N + " ordre : " + ordre);
+            m.ReleaseMutex();
+
         }
     }
 }
