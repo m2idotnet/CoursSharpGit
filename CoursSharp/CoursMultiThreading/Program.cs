@@ -10,10 +10,11 @@ namespace CoursMultiThreading
         private static Mutex m2 = new Mutex();
         private static Mutex m3 = new Mutex();
         private static int v1;
-        private static int v2; 
+        private static int v2;
+        private static SemaphoreSlim s = new SemaphoreSlim(3);
         static void Main(string[] args)
         {
-            //Pour créer un thread on utilise la classe Thread
+            /*Pour créer un thread on utilise la classe Thread
             //Thread t1 = new Thread(MethodeThread1);
             //Thread t2 = new Thread(MethodeThread2);
             ////Démarrer un Thread
@@ -27,7 +28,12 @@ namespace CoursMultiThreading
             //Personne p1 = new Personne { Nom = "tata", Prenom = "toto" };
             //Personne p2 = new Personne { Nom = "titi", Prenom = "Minet" };
             //t1.Start(p1);
-            //t2.Start(p1);
+            //t2.Start(p1);*/
+            for(int i=1; i <= 10; i++)
+            {
+                Thread t = new Thread(Afficher);
+                t.Start(i);
+            }
             Console.ReadLine();
         }
         //static void MethodeThread1()
@@ -94,6 +100,16 @@ namespace CoursMultiThreading
             m2.WaitOne();
             v2 = v2 + 10;
             m2.ReleaseMutex();
+        }
+
+        static void Afficher(object c)
+        {
+            Console.WriteLine("Start Thread N° : "+c);
+            s.Wait();
+            Console.WriteLine("Thread En travail : "+c);
+            Thread.Sleep(6000);
+            Console.WriteLine("Fin du travail : " + c);
+            s.Release();
         }
     }
 }
