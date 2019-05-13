@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace CoursMultiThreading
 {
@@ -42,9 +43,26 @@ namespace CoursMultiThreading
             //new Thread(c2.Compter).Start();
             //Utilisation de pool de thread
             //ThreadPool.QueueUserWorkItem((o) => Console.Write(o), "Coucou");
-            ThreadPool.QueueUserWorkItem(afficher, "Coucou");
-            ThreadPool.QueueUserWorkItem(afficher, "bonjour");
-            ThreadPool.QueueUserWorkItem(afficher, 10);
+            //ThreadPool.QueueUserWorkItem(afficher, "Coucou");
+            //ThreadPool.QueueUserWorkItem(afficher, "bonjour");
+            //ThreadPool.QueueUserWorkItem(afficher, 10);
+
+            //Utilisation des tasks
+            //Task<string> t = Task.Run(new Func<string>(() => {
+            //    return "coucou";
+            //    }));
+            Task<string> t = Task.Run(new Func<string>(() => {
+                throw new Exception("Exception levee par la task");
+            }));
+            
+            try
+            {
+                Console.WriteLine(t.Result);
+            }catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            
             Console.ReadLine();
         }
         static void afficher(object c)
@@ -140,3 +158,4 @@ namespace CoursMultiThreading
         //}
     }
 }
+ 
