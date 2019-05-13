@@ -29,11 +29,16 @@ namespace CoursMultiThreading
             //Personne p2 = new Personne { Nom = "titi", Prenom = "Minet" };
             //t1.Start(p1);
             //t2.Start(p1);*/
-            for(int i=1; i <= 10; i++)
-            {
-                Thread t = new Thread(Afficher);
-                t.Start(i);
-            }
+            //for(int i=1; i <= 10; i++)
+            //{
+            //    Thread t = new Thread(Afficher);
+            //    t.Start(i);
+            //}
+            //Correction ex1
+            Compteur c1 = new Compteur { Nom = "toto", N = 10 };
+            Compteur c2 = new Compteur { Nom = "tata", N = 15 };
+            new Thread(c1.Compter).Start();
+            new Thread(c2.Compter).Start();
             Console.ReadLine();
         }
         //static void MethodeThread1()
