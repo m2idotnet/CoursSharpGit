@@ -22,10 +22,14 @@ namespace DesignPattern
             //CarteMere cm = ordinateur.CreerCarteMere("ASUS", "LG5511");
             //Console.WriteLine(cg.Afficher());
             //Console.WriteLine(cm.Afficher());
-            IContactable e1 = new Employe();
-            Address a1 = new Address(e1);
-            IContactable e2 = new Entreprise();
-            Address a2 = new Address(e2);
+            //IContactable e1 = new Employe();
+            //Address a1 = new Address(e1);
+            //IContactable e2 = new Entreprise();
+            //Address a2 = new Address(e2);
+            Container container = new Container();
+            container.Register<IContactable, Employe>();
+            IContactable o = container.Resolver<IContactable>();
+            o.Nom = "toto";
             Console.ReadLine();
         }
     }
