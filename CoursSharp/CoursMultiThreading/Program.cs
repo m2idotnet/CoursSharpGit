@@ -39,8 +39,12 @@ namespace CoursMultiThreading
             //Correction ex1
             //Compteur c1 = new Compteur { Nom = "toto", N = 10 };
             //Compteur c2 = new Compteur { Nom = "tata", N = 15 };
-            //new Thread(c1.Compter).Start();
-            //new Thread(c2.Compter).Start();
+            //Thread t = new Thread(c1.Compter);
+
+            //Thread t2 = new Thread(c2.Compter);
+            //t.Start();
+            //t2.Start();
+
             //Utilisation de pool de thread
             //ThreadPool.QueueUserWorkItem((o) => Console.Write(o), "Coucou");
             //ThreadPool.QueueUserWorkItem(afficher, "Coucou");
@@ -51,19 +55,35 @@ namespace CoursMultiThreading
             //Task<string> t = Task.Run(new Func<string>(() => {
             //    return "coucou";
             //    }));
-            Task<string> t = Task.Run(new Func<string>(() => {
-                throw new Exception("Exception levee par la task");
-            }));
-            
-            try
-            {
-                Console.WriteLine(t.Result);
-            }catch(Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-            
+            //Task<string> t = Task.Run(new Func<string>(() => {
+            //    throw new Exception("Exception levee par la task");
+            //}));
+            //Task.Run(() => { });
+
+            //try
+            //{
+            //    Console.WriteLine(t.Result);
+            //}catch(Exception e)
+            //{
+            //    Console.WriteLine(e.Message);
+            //}
+            Baignoire b = new Baignoire();
+            b.pleine += methodePleine;
+            Robinet r = new Robinet();
+            Task.Factory.StartNew(() => r.debite(50, b));
+            Task.Factory.StartNew(() => b.Fuite(10));
+            //Task t = Task.Run(() => r.debite(50, b));
+            //Task t2 = Task.Run(() => b.Fuite(10));
+            //Thread t1 = new Thread(() => r.debite(50, b));
+            //Thread t2 = new Thread(() => b.Fuite(10));
+            //t1.Start();
+            //t2.Start();
             Console.ReadLine();
+        }
+
+        static void methodePleine()
+        {
+            Console.WriteLine("Baignoire enfin pleine !");
         }
         static void afficher(object c)
         {
